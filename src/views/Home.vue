@@ -1,0 +1,19 @@
+<template>
+  <div class="home">
+    <img alt="Vue logo" src="../assets/logo.png">
+  </div>
+</template>
+
+<script>
+
+
+export default {
+  name: 'home'
+}
+</script>
+<style lang="scss" scoped>
+  .home{
+    margin-top: 50px;
+  }
+</style>
+
