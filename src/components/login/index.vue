@@ -19,21 +19,34 @@ export default {
     data(){
         return{
                 username: '',
-                password: ''              
+                password: '',
+                redirect: undefined 
+        }
+    },
+    watch: {
+        $route: {
+        handler: function(route) {
+            this.redirect = route.query && route.query.redirect
+        },
+        immediate: true
         }
     },
     methods:{      
         login(){
-            const params = {
-                username: this.username,
-                password: this.password
-            }
+            // const params = {
+            //     username: this.username,
+            //     password: this.password
+            // }
+            const params='username=admin&password=admin';
             this.$store.dispatch('login',params).then(res=>{
-                console.log(res)
+                console.log(res);
+                this.$router.push({ path: this.redirect || '/' })
+  
             })
-            // .catch(err=>{
-            //     console.log(err)
-            // })
+            .catch(err=>{
+                console.log(err);
+               // console.log(err)
+            })
         }
     }
 }

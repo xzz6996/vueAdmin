@@ -3,10 +3,11 @@ import Axios from 'axios'
 const axios=Axios.create({
     //baseURL:"http://admintest.happymmall.com/",
     timeout: 6000,
-    headers: {'X-Requested-With': 'XMLHttpRequest'},
+  //  headers: {'Content-Type': 'application/json;charset=UTF-8'}
+  headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
+  
 })
-//axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-axios.defaults.headers.post['Content-Type'] = 'application/json';
+
 axios.interceptors.request.use(
     config=>{
         return config
@@ -16,13 +17,8 @@ axios.interceptors.request.use(
 )
 
 axios.interceptors.response.use(
-    response=>{
-        if(response){
-            console.log(response)
-        }else{
-            return 
-        }
-    },(err)=>{
+    response=>response
+    ,(err)=>{
         return Promise.reject(err)
     }
 )
